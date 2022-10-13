@@ -11,15 +11,31 @@
     <script>
       var gameInstance = UnityLoader.instantiate("gameContainer", "Build/UniversalReelSlotsH5.json", {onProgress: UnityProgress});
     </script>
+	<script>
+    function Reset()
+    {
+        var canvas = document.getElementById("#canvas");              //获取#canvas
+        canvas.height=  document.documentElement.clientHeight;        //获取body可见区域高度
+        canvas.width =  document.documentElement.clientWidth;         //获取body可见区域高度
+    }
+	</script>
   </head>
   <body>
     <div class="webgl-content">
-      <div id="gameContainer" style="width: 960px; height: 600px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
-        <div class="title">Universal Reel Slots</div>
-      </div>
+      <div id="gameContainer" style="width: 100vw; height: 100vh; margin: auto"></div>
+      
     </div>
+	
+	<script>
+		window.onresize = adjuest;
+		function adjuest(){
+			var divCon = document.getElementById("unityContainer");
+			var canvas = document.getElementById("#canvas");
+			divCon.style.width = "100vw";//window.innerWidth + "px";
+			divCon.style.height = "100vh";//window.innerHeight + "px";
+			canvas.style.width = "100vw";//window.innerWidth + "px";
+			canvas.style.height = "100vh"//window.innerHeight + "px";
+		}
+	</script>
   </body>
 </html>
